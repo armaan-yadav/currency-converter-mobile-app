@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
 
 class CurrencyConverterMaterialPage extends StatefulWidget {
-  CurrencyConverterMaterialPage({super.key}) {
-    print("constructor");
-  }
+  const CurrencyConverterMaterialPage({super.key});
   @override
   State createState() => _CurrencyConverterMaterialPageState();
 }
 
 class _CurrencyConverterMaterialPageState
     extends State<CurrencyConverterMaterialPage> {
+  final TextEditingController textEditingController = TextEditingController();
+  double result = 0;
+  void convertToInr(double input) {
+    result = input * 81;
+    print("result changed");
+  }
+
   @override
   Widget build(BuildContext context) {
-    print("create state");
-    // BuildContext tells the location of the widget in widget tree
-    final TextEditingController textEditingController = TextEditingController();
-    double result = 0;
-    void convertToInr(double input) {
-      result = input * 81;
-    }
-
     //creating a varibale for border
     const border = OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -32,7 +29,7 @@ class _CurrencyConverterMaterialPageState
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
         title: const Text(
-          "Currency Converter",
+          "Currency Converterrrr",
           style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w700,
@@ -48,7 +45,7 @@ class _CurrencyConverterMaterialPageState
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              result.toString(),
+              "INR ${result.toStringAsFixed(2)}",
               style: const TextStyle(
                 fontSize: 33,
                 letterSpacing: 2,
@@ -81,9 +78,9 @@ class _CurrencyConverterMaterialPageState
               padding: const EdgeInsets.all(10),
               child: ElevatedButton(
                 onPressed: () {
-                  convertToInr(double.parse(textEditingController.text));
-                  build(context);
-                  print("hehe");
+                  setState(() {
+                    convertToInr(double.parse(textEditingController.text));
+                  });
                 },
                 style: const ButtonStyle(
                   elevation: WidgetStatePropertyAll(5),

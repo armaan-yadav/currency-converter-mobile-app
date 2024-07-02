@@ -2,11 +2,13 @@
 //!inside the main.dart, the app first looks for main function
 //!in main function, there's a function provided by material.dart known as runApp(_app_as_argument);
 
+import 'package:currency_converter/cuptertino_page.dart';
 import 'package:currency_converter/material_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MyCuptertinoApp());
   //why const  MyApp() ??  and  not simply use MyApp()
   //it makes the constructor a compile time constant
   //it tells the  compiler that we don't need to create this again and again
@@ -32,8 +34,19 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: CurrencyConverterMaterialPage(),
+    );
+  }
+}
+
+class MyCuptertinoApp extends StatelessWidget {
+  const MyCuptertinoApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const CupertinoApp(
+      home: CurrencyConverterCupertinoPage(),
     );
   }
 }
