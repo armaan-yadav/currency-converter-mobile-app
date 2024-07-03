@@ -14,6 +14,17 @@ class _CuptertinoPageState extends State<CurrencyConverterCupertinoPage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     //creating a varibale for border
     return CupertinoPageScaffold(
